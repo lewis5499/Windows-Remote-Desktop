@@ -69,4 +69,3 @@
 
 ---
 
-This translation maintains the original instructions while ensuring clarity and accuracy in English.
