@@ -1,13 +1,37 @@
+
 ---
 
+# 使用 GitHub 开源的 FRP 进行内网穿透，以服务于 Windows 远程桌面
 
-使用 Github 开源的 frp 进行内网穿透, 以服务于 Windows 远程桌面。
+## 步骤 1: 在具有公网 IP 的服务器 (A) 上设置 FRP 服务器
+1. 将 `*_server.zip` 解压到具有公网 IP 地址的服务器上的一个目录。
+2. 编辑 `frps.toml` 文件：
+   - 配置暴露的端口和 token。
+3. 双击 `run_frp_server.bat` 运行服务器。
 
-step 1: 在具有公网 ip 的服务器:A 上解压 "*_server.zip", 在 "frps.toml" 中配置暴露的 port 和 token, 然后双击 "run_frp_server.bat".
-step 2: 在被控端 PC:B 上解压 "*_client_visitor.zip", 在 "frpc.toml" 中配置服务器公网 ip 与服务器暴露的 port, 设置本地 3389 远控端口的转发, 设置 sk, 然后双击"run_frp_client.bat", 要终止远控端口转发则双击"kill_frp_client.bat".
-step 3: 在要使用远控的 pc:C 上解压 "*_client.zip", 在 "frpc.toml" 中配置服务器公网 ip 与服务器暴露的 port, 设置与计算机 B 相同的 sk. 可随意设置合理的 bindPort, 这里假定为 7089, 然后双击"run_frpc_visitor.bat"
-step 4: 在要使用远控的 pc:C 上打开 Windows 远程桌面, 输入 "127.0.0.1:7089" 即可进行远程桌面连接. Windows默认远程桌面帧率为30Hz, 可以改为60Hz. 详见: https://zhuanlan.zhihu.com/p/492662854
+## 步骤 2: 在被控端 PC (B) 上设置 FRP 客户端
+1. 将 `*_client_visitor.zip` 解压到被控 PC 上的一个目录。
+2. 编辑 `frpc.toml` 文件：
+   - 指定服务器的公网 IP 地址和暴露的端口。
+   - 配置本地 RDP 端口（默认为 3389）进行转发。
+   - 设置密钥 (`sk`)。
+3. 双击 `run_frp_client.bat` 启动客户端。
+4. 要终止 RDP 端口转发，双击 `kill_frp_client.bat`。
 
+## 步骤 3: 在要使用远控的 PC (C) 上设置 FRP 客户端
+1. 将 `*_client.zip` 解压到要使用远程桌面的 PC 上的一个目录。
+2. 编辑 `frpc.toml` 文件：
+   - 指定服务器的公网 IP 地址和暴露的端口。
+   - 使用与计算机 B 相同的密钥 (`sk`)。
+   - 设置一个合理的 `bindPort`，这里假设为 7089。
+3. 双击 `run_frpc_visitor.bat` 启动客户端。
+
+## 步骤 4: 连接到远程桌面
+1. 在要使用远控的 PC (C) 上打开 Windows 远程桌面连接。
+2. 输入 `127.0.0.1:7089` 作为连接地址。
+3. 点击“连接”以进行远程桌面连接。
+
+**注意:** Windows 默认远程桌面帧率为 30Hz。您可以将其更改为 60Hz 以获得更流畅的体验。详细信息请参阅此指南：[更改 RDP 帧率](https://zhuanlan.zhihu.com/p/492662854)。
 
 ---
 
