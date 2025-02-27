@@ -10,7 +10,7 @@
 3. 双击 `run_frp_server.bat` 运行服务器。
 
 ## 步骤 2: 在被控端 PC (B) 上设置 FRP 客户端
-1. 将 `*_client_visitor.zip` 解压到被控 PC 上的一个目录。
+1. 将 `*_client.zip` 解压到被控 PC 上的一个目录。
 2. 编辑 `frpc.toml` 文件：
    - 指定服务器的公网 IP 地址和暴露的端口。
    - 配置本地 RDP 端口（默认为 3389）进行转发。
@@ -19,7 +19,7 @@
 4. 要终止 RDP 端口转发，双击 `kill_frp_client.bat`。
 
 ## 步骤 3: 在要使用远控的 PC (C) 上设置 FRP 客户端
-1. 将 `*_client.zip` 解压到要使用远程桌面的 PC 上的一个目录。
+1. 将 `*_client_visitor.zip` 解压到要使用远程桌面的 PC 上的一个目录。
 2. 编辑 `frpc.toml` 文件：
    - 指定服务器的公网 IP 地址和暴露的端口。
    - 使用与计算机 B 相同的密钥 (`sk`)。
@@ -44,7 +44,7 @@
 3. Run the server by double-clicking `run_frp_server.bat`.
 
 **Step 2: Set Up FRP Client on Controlled PC (B)**
-1. Extract `*_client_visitor.zip` to a directory on the controlled PC.
+1. Extract `*_client.zip` to a directory on the controlled PC.
 2. Edit the `frpc.toml` file:
    - Specify the public IP address and exposed port of the server.
    - Configure the local RDP port (default is 3389) for forwarding.
@@ -53,7 +53,7 @@
 4. To stop the RDP port forwarding, double-click `kill_frp_client.bat`.
 
 **Step 3: Set Up FRP Client on Remote Access PC (C)**
-1. Extract `*_client.zip` to a directory on the remote access PC.
+1. Extract `*_client_visitor.zip` to a directory on the remote access PC.
 2. Edit the `frpc.toml` file:
    - Specify the public IP address and exposed port of the server.
    - Use the same secret key (`sk`) as configured for PC B.
